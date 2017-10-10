@@ -23,8 +23,34 @@ namespace twozerofoureight
             controller = new TwoZeroFourEightController();
             controller.AddModel(model);
             controller.ActionPerformed(TwoZeroFourEightController.LEFT);
+            this.KeyDown += new KeyEventHandler(Key_Down);
+            
         }
+        private void key_press(object sender, KeyPressEventArgs e)
+        {
 
+        }
+        private void Key_Down(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyData)
+            {
+                case Keys.Up:
+                case Keys.D :
+                    controller.ActionPerformed(TwoZeroFourEightController.RIGHT);
+                    break;
+                case Keys.A:
+                    controller.ActionPerformed(TwoZeroFourEightController.LEFT);
+                    break;
+                case Keys.W:
+                    controller.ActionPerformed(TwoZeroFourEightController.UP);
+                    break;
+                case Keys.S:
+                    controller.ActionPerformed(TwoZeroFourEightController.DOWN);
+                    break;                 
+            }
+        
+        }
+        
         public void Notify(Model m)
         {
             UpdateBoard(((TwoZeroFourEightModel) m).GetBoard());
@@ -97,5 +123,16 @@ namespace twozerofoureight
             controller.ActionPerformed(TwoZeroFourEightController.DOWN);
         }
 
+        private void lbl32_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbl01_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        
     }
 }
